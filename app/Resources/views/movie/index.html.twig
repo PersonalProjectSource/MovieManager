@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Movies list</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Description</th>
+                <th>Createdat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for movie in movies %}
+            <tr>
+                <td><a href="{{ path('movie_show', { 'id': movie.id }) }}">{{ movie.id }}</a></td>
+                <td>
+                    {% if movie.image %}
+                        <img style="width: 200px"src="{{ asset(movie.image.getWebPath) }}" alt="{{ movie.image.alt }}"/>
+                    {% endif %}
+                </td>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.slug }}</td>
+                <td>{{ movie.description }}</td>
+                <td>{% if movie.createdAt %}{{ movie.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('movie_show', { 'id': movie.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('movie_edit', { 'id': movie.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('movie_new') }}">Create a new movie</a>
+        </li>
+    </ul>
+    {% if pagination is defined %}
+    <div style="text-align: center">
+        {% include 'pagination.html.twig' with {'pagination' : pagination} %}
+    </div>
+    {% endif %}
+{% endblock %}

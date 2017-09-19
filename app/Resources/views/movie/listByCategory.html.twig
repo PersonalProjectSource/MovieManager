@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>{{ category.title }}</h2>
+
+    <div>
+        {% for movie in movies %}
+            <div>
+                    <h4>
+                        <a>
+                            {{ movie.title }}
+                        </a>
+                    </h4>
+                <div>
+                        {{ movie.description }}<br />
+                        <br />
+                        <a href="{{ path('movie_show', { 'id': movie.id, 'slug': movie.slug }) }}">more&hellip;</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div style="text-align: center">
+        {% include 'pagination.html.twig' with {'pagination' : pagination} %}
+    </div>
+{% endblock %}

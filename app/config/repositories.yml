@@ -1,0 +1,6 @@
+services:
+    app.repository.movie:
+        class: AppBundle\Repository\MovieRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments: ['AppBundle\Entity\Movie']
+        public: true

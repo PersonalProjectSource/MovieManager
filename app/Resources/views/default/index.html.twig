@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% block stylesheets %}
+        <style>
+            table {
+                border: solid #222222 medium;
+                margin:auto;
+            }
+            .line {
+                width: 20px;
+                border: solid #222222 thin;
+            }
+            .cols {
+                text-align: center;
+                font-style: oblique;
+                height: 20px;
+                width: 20px;
+                border: solid #222222 thin;
+            }
+            .value {
+                background-color: #5eb5e0;
+            }
+        </style>
+    {% endblock %}
+
+    <form action="{{ path('searchCtrl') }}" method="post">
+        <input type="text" name="search" placeholder="Taper votre film">
+        <input type="submit" class="submit">
+    </form>
+    <ul>
+    {% for category in categories %}
+        <li>
+            <a href="{{ path('movies_by_category', { category: category.slug }) }}">{{ category.title }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <table>
+        <tr class="line">
+            <td class="cols value">5</td>
+            <td class="cols value">3</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">7</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+        </tr>
+        <tr class="line">
+            <td class="cols value">6</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">1</td>
+            <td class="cols value">9</td>
+            <td class="cols value">5</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+        </tr>
+        <tr class="line">
+            <td class="cols"></td>
+            <td class="cols value">9</td>
+            <td class="cols value">8</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">6</td>
+            <td class="cols"></td>
+        </tr>
+        <tr class="line">
+            <td class="cols value">8</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">6</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">3</td>
+        </tr>
+        <tr class="line">
+            <td class="cols value">4</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">8</td>
+            <td class="cols"></td>
+            <td class="cols value">3</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">1</td>
+        </tr>
+        <tr class="line">
+            <td class="cols value">7</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">2</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">6</td>
+        </tr>
+        <tr class="line">
+            <td class="cols"></td>
+            <td class="cols value">6</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">2</td>
+            <td class="cols value">8</td>
+            <td class="cols"></td>
+        </tr>
+        <tr class="line">
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">4</td>
+            <td class="cols value">1</td>
+            <td class="cols value">9</td>
+            <td class="cols"></td>
+            <td class="cols value">7</td>
+            <td class="cols value">5</td>
+        </tr>
+        <tr class="line">
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">8</td>
+            <td class="cols"></td>
+            <td class="cols"></td>
+            <td class="cols value">7</td>
+            <td class="cols value">9</td>
+        </tr>
+    </table>
+{% endblock %}
